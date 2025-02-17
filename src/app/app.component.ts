@@ -19,7 +19,6 @@ export class AppComponent {
       console.log('Login attempted');
       console.log('Username:', this.username);
       console.log('Password:', this.password);
-      // Aquí iría la lógica de autenticación
     }
   }
 }

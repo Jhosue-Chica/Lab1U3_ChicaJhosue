@@ -38,19 +38,13 @@ describe('Test for Calculator', () => {
       let name1;
       expect(name).toBeDefined();
       expect(name1).toBeUndefined();
-
-      expect(1+1 === 2).toBeTruthy();
-      expect(1+1 === 3).toBeFalsy();
-
+      expect(1 + 1 === 2).toBeTruthy();
+      expect(1 + 1 === 3).toBeFalsy();
       expect(5).toBeGreaterThan(4);
       expect(5).toBeGreaterThanOrEqual(5);
       expect(5).toBeLessThan(6);
-
       expect('123456').toMatch(/123/);
-
       expect(["apple", "orange", "banana"]).toContain("banana");
     });
-
   });
-
 });
