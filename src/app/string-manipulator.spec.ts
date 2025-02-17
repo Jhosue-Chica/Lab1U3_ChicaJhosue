@@ -63,4 +63,67 @@ describe('Test for StringManipulator', () => {
       expect(TestBed.inject(StringManipulator).countVowels('AeIoU')).toBe(5);
     });
   });
+
+  describe('Test for countConsonants', () => {
+    it('should count consonants correctly', () => {
+      expect(TestBed.inject(StringManipulator).countConsonants('hello')).toBe(3);
+    });
+
+    it('should return 0 for strings without consonants', () => {
+      expect(TestBed.inject(StringManipulator).countConsonants('aeiou')).toBe(0);
+    });
+
+    it('should work with uppercase consonants', () => {
+      expect(TestBed.inject(StringManipulator).countConsonants('BCDFGHJKLMNPQRSTVWXYZ')).toBe(21);
+    });
+  });
+
+  describe('Test for countWords', () => {
+    it('should count words correctly', () => {
+      expect(TestBed.inject(StringManipulator).countWords('hello world')).toBe(2);
+    });
+
+    it('should return 0 for empty string', () => {
+      expect(TestBed.inject(StringManipulator).countWords('')).toBe(0);
+    });
+
+    it('should work with multiple spaces', () => {
+      expect(TestBed.inject(StringManipulator).countWords('hello   world')).toBe(2);
+    });
+  });
+
+  describe('Test for countCharacters', () => {
+    it('should count characters correctly', () => {
+      expect(TestBed.inject(StringManipulator).countCharacters('hello')).toBe(5);
+    });
+
+    it('should return 0 for empty string', () => {
+      expect(TestBed.inject(StringManipulator).countCharacters('')).toBe(0);
+    });
+
+    it('should work with spaces', () => {
+      expect(TestBed.inject(StringManipulator).countCharacters('hello world')).toBe(11);
+    });
+  });
+
+  //Jasmine Matchers
+  describe('Additional Jasmine Matchers', () => {
+    it('should work with toBeCloseTo', () => {
+      expect(0.1 + 0.2).toBeCloseTo(0.3, 10);
+    });
+
+    it('should work with toMatch', () => {
+      expect('Hello World').toMatch(/World/);
+    });
+
+    it('should work with toContain', () => {
+      expect([1, 2, 3]).toContain(2);
+    });
+
+    it('should work with toThrow', () => {
+      expect(() => {
+        throw new Error('Test error');
+      }).toThrow();
+    });
+  });
 });

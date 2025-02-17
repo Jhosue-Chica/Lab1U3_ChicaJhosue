@@ -14,4 +14,16 @@ export class StringManipulator {
   countVowels(text: string): number {
     return (text.match(/[aeiou]/gi) || []).length;
   }
+
+  countConsonants(text: string): number {
+    return (text.match(/[bcdfghjklmnpqrstvwxyz]/gi) || []).length;
+  }
+
+  countWords(text: string): number {
+    return text.split(/\s+/).length;
+  }
+
+  countCharacters(text: string): number {
+    return text.length;
+  }
 }

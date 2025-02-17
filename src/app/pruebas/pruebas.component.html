@@ -1,0 +1,98 @@
+<div class="container">
+  <!-- Calculator Section -->
+  <section class="section">
+    <h2>Calculadora</h2>
+    <div class="calculator-inputs">
+      <input type="number" [(ngModel)]="numberA" placeholder="Número A">
+      <input type="number" [(ngModel)]="numberB" placeholder="Número B">
+    </div>
+    <div class="button-group">
+      <button (click)="calculate('add')">Sumar</button>
+      <button (click)="calculate('subtract')">Restar</button>
+      <button (click)="calculate('multiply')">Multiplicar</button>
+      <button (click)="calculate('divide')">Dividir</button>
+      <button (click)="calculate('sqrt')">Raíz Cuadrada (A)</button>
+    </div>
+    <div class="result">
+      Resultado: {{ calculatorResult }}
+    </div>
+  </section>
+
+  <!-- Number Processor Section -->
+  <section class="section">
+    <h2>Procesador de Números</h2>
+    <div class="input-group">
+      <input type="number" [(ngModel)]="numberInput" placeholder="Ingrese un número">
+      <button (click)="addNumberToArray()">Agregar</button>
+      <button (click)="clearNumbers()">Limpiar</button>
+    </div>
+    <div class="array-display">
+      Números: {{ numberArray.join(', ') }}
+    </div>
+    <div class="button-group">
+      <button (click)="processNumbers('sum')">Suma</button>
+      <button (click)="processNumbers('average')">Promedio</button>
+      <button (click)="processNumbers('max')">Máximo</button>
+      <button (click)="processNumbers('isEven')">Es Par (primer número)</button>
+    </div>
+    <div class="result">
+      Resultado: {{ numberProcessorResult }}
+    </div>
+  </section>
+
+  <!-- String Manipulator Section -->
+  <section class="section">
+    <h2>Manipulador de Textos</h2>
+    <div class="input-group">
+      <input type="text" [(ngModel)]="textA" placeholder="Texto A">
+      <input type="text" [(ngModel)]="textB" placeholder="Texto B">
+      <input type="number" [(ngModel)]="repetitions" placeholder="Repeticiones">
+    </div>
+    <div class="button-group">
+      <button (click)="processString('concatenate')">Concatenar</button>
+      <button (click)="processString('repeat')">Repetir</button>
+      <button (click)="processString('reverse')">Invertir</button>
+      <button (click)="processString('countVowels')">Contar Vocales</button>
+      <button (click)="processString('countConsonants')">Contar Consonantes</button>
+      <button (click)="processString('countWords')">Contar Palabras</button>
+      <button (click)="processString('countCharacters')">Contar Caracteres</button>
+    </div>
+    <div class="result">
+      Resultado: {{ stringResult }}
+    </div>
+  </section>
+
+  <!-- Array Manipulator Section -->
+  <section class="section">
+    <h2>Manipulador de Arrays</h2>
+    <div class="input-group">
+      <input type="text" [(ngModel)]="arrayInput1" placeholder="Elementos Array 1 (separados por coma)">
+      <button (click)="addToArray(1)">Agregar al Array 1</button>
+    </div>
+    <div class="input-group">
+      <input type="text" [(ngModel)]="arrayInput2" placeholder="Elementos Array 2 (separados por coma)">
+      <button (click)="addToArray(2)">Agregar al Array 2</button>
+    </div>
+    <div class="input-group">
+      <input type="number" [(ngModel)]="positions" placeholder="Posiciones a rotar">
+    </div>
+    <div class="array-display">
+      Array 1: {{ array1.join(', ') }}
+    </div>
+    <div class="array-display">
+      Array 2: {{ array2.join(', ') }}
+    </div>
+    <div class="button-group">
+      <button (click)="processArray('removeDuplicates')">Eliminar Duplicados</button>
+      <button (click)="processArray('mostFrequent')">Más Frecuente</button>
+      <button (click)="processArray('rotate')">Rotar</button>
+      <button (click)="processArray('intersection')">Intersección</button>
+      <button (click)="processArray('uniqueElements')">Elementos Únicos</button>
+      <button (click)="processArray('flatten')">Aplanar</button>
+      <button (click)="clearArrays()">Limpiar</button>
+    </div>
+    <div class="result">
+      Resultado: {{ arrayResult | json }}
+    </div>
+  </section>
+</div>

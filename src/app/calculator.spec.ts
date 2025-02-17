@@ -32,6 +32,42 @@ describe('Test for Calculator', () => {
     });
   });
 
+  describe('Test for add', () => {
+    it('should return 6', () => {
+      // Arrange, Act & Assert
+      expect(TestBed.inject(Calculator).add(3, 3)).toBe(6);
+    });
+
+    it('should return 3', () => {
+      // Arrange, Act & Assert
+      expect(TestBed.inject(Calculator).add(0, 3)).toBe(3);
+    });
+  });
+
+  describe('Test for subtract', () => {
+    it('should return 0', () => {
+      // Arrange, Act & Assert
+      expect(TestBed.inject(Calculator).subtract(3, 3)).toBe(0);
+    });
+
+    it('should return -3', () => {
+      // Arrange, Act & Assert
+      expect(TestBed.inject(Calculator).subtract(0, 3)).toBe(-3);
+    });
+  });
+
+  describe('Test for squareRoot', () => {
+    it('should return 3', () => {
+      // Arrange, Act & Assert
+      expect(TestBed.inject(Calculator).squareRoot(9)).toBe(3);
+    });
+
+    it('should return 0', () => {
+      // Arrange, Act & Assert
+      expect(TestBed.inject(Calculator).squareRoot(0)).toBe(0);
+    });
+  });
+
   describe('Jasmine Matchers', () => {
     it('test matchers', () => {
       let name = 'Luis';
