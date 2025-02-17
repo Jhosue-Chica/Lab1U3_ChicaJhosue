@@ -1,57 +1,61 @@
 export class ArrayManipulator {
-  // Elimina duplicados de un array
-  removeDuplicates<T>(array: T[]): T[] {
-    return [...new Set(array)];
+  removeDuplicates<T>(arr: T[]): T[] {
+    return [...new Set(arr)];
   }
 
-  // Busca el elemento más frecuente
-  mostFrequent<T>(array: T[]): T | null {
-    if (array.length === 0) return null;
+  mostFrequent<T>(arr: T[]): T | null {
+    if (arr.length === 0) return null;
 
-    const frequency = array.reduce((acc, val) => {
-      acc[val as any] = (acc[val as any] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+    const frequency = new Map<T, number>();
+    arr.forEach(item => {
+      frequency.set(item, (frequency.get(item) || 0) + 1);
+    });
 
-    return Object.entries(frequency).reduce((a, b) =>
-      frequency[a as any] > frequency[b[0]] ? a : b[0]
-    , Object.keys(frequency)[0]) as T;
+    let maxFreq = 0;
+    let result: T | null = null;
+
+    for (const [item, freq] of frequency.entries()) {
+      if (freq > maxFreq) {
+        maxFreq = freq;
+        result = item;
+      }
+    }
+
+    return result;
   }
 
-  // Rota un array n posiciones
-  rotate<T>(array: T[], positions: number): T[] {
-    if (array.length === 0) return [];
-    const pos = positions % array.length;
-    return [...array.slice(pos), ...array.slice(0, pos)];
+  rotate<T>(arr: T[], positions: number): T[] {
+    if (arr.length === 0) return [];
+
+    const normalizedPos = positions % arr.length;
+    const rotationPoint = arr.length - normalizedPos;
+    return [...arr.slice(rotationPoint), ...arr.slice(0, rotationPoint)];
   }
 
-  // Encuentra la intersección entre dos arrays
-  intersection<T>(array1: T[], array2: T[]): T[] {
-    return array1.filter(item => array2.includes(item));
+  intersection<T>(arr1: T[], arr2: T[]): T[] {
+    return arr1.filter(item => arr2.includes(item));
   }
 
-  // Agrupa elementos por un criterio
-  groupBy<T>(array: T[], criteria: (item: T) => string): Record<string, T[]> {
-    return array.reduce((acc, item) => {
-      const key = criteria(item);
-      acc[key] = acc[key] || [];
-      acc[key].push(item);
-      return acc;
-    }, {} as Record<string, T[]>);
+  groupBy<T>(arr: T[], keyFn: (item: T) => string): { [key: string]: T[] } {
+    return arr.reduce((result, item) => {
+      const key = keyFn(item);
+      if (!result[key]) {
+        result[key] = [];
+      }
+      result[key].push(item);
+      return result;
+    }, {} as { [key: string]: T[] });
   }
 
-  // Aplana un array multidimensional
-  flatten(array: any[]): any[] {
-    return array.reduce((flat, toFlatten) => {
-      return flat.concat(Array.isArray(toFlatten) ? this.flatten(toFlatten) : toFlatten);
+  flatten(arr: any[]): any[] {
+    return arr.reduce((flat, item) => {
+      return flat.concat(Array.isArray(item) ? this.flatten(item) : item);
     }, []);
   }
 
-  // Encuentra elementos únicos entre dos arrays
-  uniqueElements<T>(array1: T[], array2: T[]): T[] {
-    const combined = [...array1, ...array2];
-    return combined.filter(item =>
-      array1.includes(item) !== array2.includes(item)
+  uniqueElements<T>(arr1: T[], arr2: T[]): T[] {
+    return [...new Set([...arr1, ...arr2])].filter(
+      item => !arr1.includes(item) || !arr2.includes(item)
     );
   }
 }

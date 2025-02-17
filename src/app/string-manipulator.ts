@@ -1,29 +1,30 @@
 export class StringManipulator {
-  concatenate(textA: string, textB: string): string {
-    return textA + textB;
+  concatenate(str1: string, str2: string): string {
+    return str1 + str2;
   }
 
-  repeat(text: string, times: number): string {
-    return text.repeat(times);
+  repeat(str: string, times: number): string {
+    return str.repeat(times);
   }
 
-  reverse(text: string): string {
-    return text.split('').reverse().join('');
+  reverse(str: string): string {
+    return str.split('').reverse().join('');
   }
 
-  countVowels(text: string): number {
-    return (text.match(/[aeiou]/gi) || []).length;
+  countVowels(str: string): number {
+    return (str.match(/[aeiou]/gi) || []).length;
   }
 
-  countConsonants(text: string): number {
-    return (text.match(/[bcdfghjklmnpqrstvwxyz]/gi) || []).length;
+  countConsonants(str: string): number {
+    return (str.match(/[bcdfghjklmnpqrstvwxyz]/gi) || []).length;
   }
 
-  countWords(text: string): number {
-    return text.split(/\s+/).length;
+  countWords(str: string): number {
+    if (!str.trim()) return 0;
+    return str.trim().split(/\s+/).length;
   }
 
-  countCharacters(text: string): number {
-    return text.length;
+  countCharacters(str: string): number {
+    return str.length;
   }
 }
